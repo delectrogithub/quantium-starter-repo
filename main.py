@@ -1,16 +1,24 @@
-# This is a sample Python script.
+import csv
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def output_formatted_line(filename):
+ with open(filename) as csv_file:
+     csv_reader = csv.reader(csv_file, delimiter=',')
+     line_count = 0
+     for row in csv_reader:
+         if line_count == 0:
+             print(f'Column names are {", ".join(row)}')
+             line_count += 1
+         else:
+             print(f'\tThere has been {row[2]} sales on {row[3]} in the {row[4]} region .')
+             line_count += 1
 
+database = int(input('Please enter the databse you would like to  reach 0, 1 or 2: '))
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if database == 0:
+    output_formatted_line('data/daily_sales_data_0.csv')
+elif database == 1:
+    output_formatted_line('data/daily_sales_data_1.csv')
+elif database == 2:
+    output_formatted_line('data/daily_sales_data_2.csv')
+else:
+    print('That is not a valid database, please retry.')
