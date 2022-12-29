@@ -64,7 +64,6 @@ for index, row in df.iterrows():
     value[1] = value[1] + 1
     datapermonth.update({iden: value})
 
-
 for key,value in datapermonth.items():
     meanofsales = value[0]/value[1]
     meanofsales = round(meanofsales)
@@ -176,6 +175,7 @@ for key,value in datapermonth.items():
         keyc1 = str(row['month']) + str(row['year'])
         if keyc1 == key:
             row['sales'] = value
+
 
 
 simplesales.to_csv('./simplesales.csv')
